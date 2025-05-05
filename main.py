@@ -74,6 +74,37 @@ def main():
 #  Application Entry Point
 main()
 #---------------------------------
+#---------------------------------
+# game_mechanics.py
+#    StudentA
+import random
+def display_welcome_message():
+    print("Welcome to the Quiz Game!")
+    print("You will answer questions from various categories.")
+
+def choose_category():
+    print("Available categories:")
+    for category in quiz_categories.keys():
+        print(f"- {category}")
+    chosen_category = input("Please choose a category: ")
+    return chosen_category if chosen_category in quiz_categories
+else None
+
+def display_score_and_round(score, round_number):
+    print(f"Score: {score} | Round: {round_number}")
+
+def display_game_over(final_score):
+    print("Game Over!")
+    print(f"Your final score is: {final_score}")
+
+def validate_answer(player_answer, correct_answer):
+    return player_answer.strip().lower() == correct_answer.strip().lower()
+
+def increase_round_number(round_number):
+    return round_number + 1
+def restart_or_exit():
+    choice = input("Do you want to play again? (yes/no): ")
+    return choice.strip().lower() == 'yes'
 
 #---------------------------------------
 #  Question Bank
