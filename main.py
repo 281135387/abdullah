@@ -74,175 +74,27 @@ def main():
 #  Application Entry Point
 main()
 #---------------------------------
+
 #---------------------------------
 # game_mechanics.py
 #    StudentA
-import random
-def display_welcome_message():
-    print("Welcome to the Quiz Game!")
-    print("You will answer questions from various categories.")
+#--------------------------------
 
-def choose_category():
-    print("Available categories:")
-    for category in quiz_categories.keys():
-        print(f"- {category}")
-    chosen_category = input("Please choose a category: ")
-    return chosen_category if chosen_category in quiz_categories
-else None
 
-def display_score_and_round(score, round_number):
-    print(f"Score: {score} | Round: {round_number}")
 
-def display_game_over(final_score):
-    print("Game Over!")
-    print(f"Your final score is: {final_score}")
-
-def validate_answer(player_answer, correct_answer):
-    return player_answer.strip().lower() == correct_answer.strip().lower()
-
-def increase_round_number(round_number):
-    return round_number + 1
-def restart_or_exit():
-    choice = input("Do you want to play again? (yes/no): ")
-    return choice.strip().lower() == 'yes'
 
 #---------------------------------------
 #  Question Bank
 #    Student B
 #---------------------------------------
 
-import random
 
-# Simplified example with one category. Expand as needed.
-questions = {
-    "Science": [
-        ("What is the chemical symbol for water?", "H2O"),
-        ("What is the chemical symbol for nitrogen?", "N"),
-    ],
-    "Science": [
-        ("What is the chemical symbol for water?", "H2O"),
-        ("What is the chemical symbol for nitrogen?", "N"),
-    ],
-}
-
-hints = {
-    "Science": [
-        # Pair each question with a corresponding hint.
-    ],
-    # Repeat for other categories as needed.
-}
 
 #---------------------------------------
-
-def select_random_question(category):
-    """
-    Selects a random question from the specified category.
-
-    Parameters:
-    - category (str): The category from which to select a question.
-
-    Returns:
-    - tuple: A tuple containing the selected question (str) and its corresponding answer (str).
-    """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
+#   Question experience
+#      Student C
 #---------------------------------------
 
-def check_answer(player_answer, correct_answer):
-    """
-    Checks if the player's answer matches the correct answer.
 
-    Parameters:
-    - player_answer (str): The answer provided by the player.
-    - correct_answer (str): The correct answer to the question.
 
-    Returns:
-    - bool: True if the answers match, False otherwise.
-    """
-    #------------------------
-    if player_answer==correct_answer:
-        return True 
-    return False
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
 
-#---------------------------------------
-
-def remove_question(category, question):
-    """
-    Removes a question from the list once it has been asked.
-
-    Parameters:
-    - category (str): The category from which to remove the question.
-    - question (str): The question to be removed.
-
-    Returns:
-    - None
-    """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
-#---------------------------------------
-
-def display_question_and_accept_answer(question):
-    """
-    Displays a question to the player and accepts their answer via input.
-
-    Parameters:
-    - question (str): The question to be displayed.
-
-    Returns:
-    - str: The player's answer to the question.
-    """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
-#---------------------------------------
-
-def provide_hint(category, question):
-    """
-    Provides a hint for the given question based on its category.
-
-    Parameters:
-    - category (str): The category of the question.
-    - question (str): The question for which to provide a hint.
-
-    Returns:
-    - str: The hint for the given question.
-    """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
-#---------------------------------------
-
-def display_correct_answer(correct_answer):
-    """
-    Displays the correct answer if the player's answer is incorrect.
-
-    Parameters:
-    - correct_answer (str): The correct answer to the question.
-
-    Returns:
-    - None
-    """
-    #------------------------
-    # Add your code here
-    #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
-
-#---------------------------------------
