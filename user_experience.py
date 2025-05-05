@@ -16,6 +16,12 @@ def choose_difficulty():
     """
     #------------------------
     # Add your code here
+    while True:
+        difficulty = input("Choose difficulty (easy, medium, hard): ").lower()
+        if difficulty in ['easy', 'medium', 'hard']:
+            return difficulty
+        else:
+            print("Invalid choice. Please choose 'easy', 'medium', or 'hard'.")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -35,6 +41,16 @@ def display_leaderboard(leaderboard):
     """
     #------------------------
     # Add your code here
+    if not leaderboard:
+        print("No scores to display.")
+        return
+
+    # Sort leaderboard by score in descending order
+    sorted_leaderboard = sorted(leaderboard.items(), key=lambda x: x[1], reverse=True)
+
+    print("Leaderboard:")
+    for rank, (player, score) in enumerate(sorted_leaderboard, 1):
+        print(f"{rank}. {player}: {score}")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -54,6 +70,8 @@ def save_score(player_name, score, file_path='scores.txt'):
     """
     #------------------------
     # Add your code here
+    with open(file_path, 'a') as file:
+        file.write(f"{player_name}: {score}\n")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -72,6 +90,15 @@ def load_top_scores(file_path='scores.txt'):
     """
     #------------------------
     # Add your code here
+    leaderboard = {}
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                player_name, score = line.strip().split(": ")
+                leaderboard[player_name] = int(score)
+    except FileNotFoundError:
+        print(f"No existing scores found. A new score file will be created.")
+    return leaderboard
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -93,6 +120,10 @@ def provide_feedback(is_correct):
     """
     #------------------------
     # Add your code here
+    if is_correct:
+        print("Well done! Your answer is correct.")
+    else:
+        print("Sorry, that's incorrect.")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -114,6 +145,11 @@ def fifty_fifty_lifeline(correct_answer, options):
     """
     #------------------------
     # Add your code here
+    incorrect_answers = [option for option in options if option != correct_answer]
+    random.shuffle(incorrect_answers)
+    
+    # Keep one incorrect answer and the correct answer
+    return [correct_answer, incorrect_answers[0]]
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -134,6 +170,13 @@ def skip_question(allowed_skips):
     """
     #------------------------
     # Add your code here
+    if allowed_skips > 0:
+        allowed_skips -= 1
+        print("You have skipped the question!")
+        return True, allowed_skips
+    else:
+        print("Sorry, you have no skips left.")
+        return False, allowed_skips
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
