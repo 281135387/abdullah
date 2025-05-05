@@ -34,6 +34,11 @@ def select_random_question(category):
     """
     #------------------------
     # Add your code here
+    if category in questions:
+        question, answer = random.choice(questions[category])
+        return question, answer
+    else:
+        raise ValueError(f"Category '{category}' does not exist.")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -53,6 +58,7 @@ def check_answer(player_answer, correct_answer):
     """
     #------------------------
     # Add your code here
+    return player_answer.strip().lower() == correct_answer.strip().lower()
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -72,6 +78,14 @@ def remove_question(category, question):
     """
     #------------------------
     # Add your code here
+    if category in questions:
+        # Find the tuple with the question
+        for q, _ in questions[category]:
+            if q == question:
+                questions[category].remove((q, _))
+                break
+    else:
+        raise ValueError(f"Category '{category}' does not exist.")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -90,6 +104,8 @@ def display_question_and_accept_answer(question):
     """
     #------------------------
     # Add your code here
+    print(question)
+    return input("Your answer: ")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -109,6 +125,12 @@ def provide_hint(category, question):
     """
     #------------------------
     # Add your code here
+    if category in hints:
+        for q, hint in zip(questions[category], hints[category]):
+            if q[0] == question:
+                return hint
+    else:
+        raise ValueError(f"Category '{category}' does not exist.")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -127,6 +149,7 @@ def display_correct_answer(correct_answer):
     """
     #------------------------
     # Add your code here
+    print(f"The correct answer is: {correct_answer}")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
